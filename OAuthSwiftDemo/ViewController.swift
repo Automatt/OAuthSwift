@@ -11,7 +11,7 @@ import OAuthSwift
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var services = ["Twitter", "Flickr", "Github", "Instagram", "Foursquare", "Fitbit", "Withings", "Linkedin", "Dropbox", "Dribbble", "Salesforce", "BitBucket", "GoogleDrive", "Smugmug", "Intuit"]
+    var services = ["Twitter", "Flickr", "Github", "Instagram", "Foursquare", "Fitbit", "Withings", "Linkedin", "Dropbox", "Dribbble", "Salesforce", "BitBucket", "GoogleDrive", "Smugmug", "Intuit", "Uber"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +87,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         }, failure: {(error:NSError!) -> Void in
             println(error.localizedDescription)
+        })
+        
+    }
+    
+    func doOAuthUber(){
+        let oauthswift = OAuth2Swift(
+            consumerKey:    Uber["consumerKey"]!,
+            consumerSecret: Uber["consumerSecret"]!,
+            authorizeUrl:   "https://login.uber.com/oauth/authorize",
+            accessTokenUrl: "https://login.uber.com/oauth/token",
+            responseType:   "code"
+        )
+        oauthswift.authorizeWithCallbackURL( NSURL(string: "oauth-swift://oauth-callback/uber")!, scope: "profile", state: "", success: {
+            credential, response in
+            self.showAlertView("Uber", message: "oauth_token:\(credential.oauth_token)")
+            }, failure: {(error:NSError!) -> Void in
+                println(error.localizedDescription)
         })
         
     }
@@ -423,6 +440,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 doOAuthSmugmug()
             case "Intuit":
                 doOAuthIntuit();
+            case "Uber":
+                doOAuthUber();
             default:
                 println("default (check ViewController tableView)")
         }

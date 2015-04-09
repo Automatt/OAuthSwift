@@ -83,3 +83,8 @@ let Intuit =
     "consumerKey": "***",
     "consumerSecret": "***"
 ]
+let Uber =
+[
+    "consumerKey": "***",
+    "consumerSecret": "***"
+]

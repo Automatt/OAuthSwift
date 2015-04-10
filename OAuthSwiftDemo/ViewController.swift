@@ -99,7 +99,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             accessTokenUrl: "https://login.uber.com/oauth/token",
             responseType:   "code"
         )
-        oauthswift.authorizeWithCallbackURL( NSURL(string: "oauth-swift://oauth-callback/uber")!, scope: "profile", state: "UBER", success: {
+        oauthswift.authorizeWithCallbackURL( NSURL(string: "oauth-swift://oauth-callback/uber")!, scope: "profile", state: "", success: {
             credential, response in
             self.showAlertView("Uber", message: "oauth_token:\(credential.oauth_token)")
             }, failure: {(error:NSError!) -> Void in

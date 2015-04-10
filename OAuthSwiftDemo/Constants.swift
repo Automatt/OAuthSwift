@@ -85,6 +85,6 @@ let Intuit =
 ]
 let Uber =
 [
-    "consumerKey": "***",
-    "consumerSecret": "***"
+    "consumerKey": "xuU5_-DmtcflxDHpUMH-kF-SCkRMtAdz",
+    "consumerSecret": "9PEdW8Bxn80ep6XMieupJpWgaLIJusvQugMGqRu9"
 ]
